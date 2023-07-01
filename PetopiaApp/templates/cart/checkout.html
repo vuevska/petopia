@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load cart_template_tags %}
+
+{% block content %}
+
+    <main class="pt-4">
+        <div class="container wow fadeIn">
+
+            <div style="width: 20%">
+                <a href="{% url 'PetopiaApp:shopping_cart' %}" class="btn text-white btn-md btn-block" type="submit"
+                   style="background-color: #717171">
+                    Back to Shopping Cart</a>
+            </div>
+
+            <h2 class="my-5 h2 text-center">Checkout form</h2>
+
+            <div class="row">
+                <div class="col-md-8 mb-2 mt-2">
+                    <div class="card">
+                        <form class="card-body" method="POST">
+                            {% csrf_token %}
+
+                            <div class="row">
+                                <!--address-->
+                                <div class="md-form mb-5 col-lg-4">
+                                    <label for="address" class="ml-3">Address</label>
+                                    {{ form.street_address }}
+                                </div>
+                                <!--address-2-->
+                                <div class="md-form mb-5 col-lg-4">
+                                    <label for="address-2" class="ml-3">Address 2 (optional)</label>
+                                    {{ form.apartment_address }}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4 col-md-12 mb-4">
+                                    <label for="country">Country</label>
+                                    {{ form.country }}
+                                    <div class="invalid-feedback">
+                                        Please select a valid country.
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <label for="zip">Zip</label>
+                                    {{ form.zip }}
+                                    <div class="invalid-feedback">
+                                        Zip code required.
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <hr>
+
+                            <div class="d-block my-3">
+                                {% for value, name in form.fields.payment_option.choices %}
+
+                                    <div class="custom-control custom-radio">
+                                        <input id="{{ name }}" name="payment_option" value="{{ value }}" type="radio"
+                                               class="custom-control-input" required>
+                                        <label class="custom-control-label" for="{{ name }}">{{ name }}</label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <hr class="mb-4">
+                            <button class="btn text-white btn-lg btn-block" type="submit"
+                                    style="background-color: #0A3E09">Continue to payment
+                            </button>
+
+                        </form>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-4">
+
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Your order</span>
+                        <span class="badge badge-danger badge-pill">{{ request.user|cart_item_count }}</span>
+                    </h4>
+
+                    <ul class="list-group mb-3 z-depth-1">
+                        {% for item in object.items.all %}
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0">
+                                        <span class="text-muted">{{ item.quantity }} x</span>
+                                        {{ item.product.name }}
+                                    </h6>
+                                    <small class="text-muted">{{ item.product.short_description }}</small>
+                                </div>
+                                <span class="text-muted">${{ item.product.price }}</span>
+                                <span class="text-muted">
+                                    <b>${{ item.get_total_cart_item_price }}</b>
+                                </span>
+                            </li>
+                        {% endfor %}
+
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (USD)</span>
+                            <strong>${{ object.get_total }}</strong>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}

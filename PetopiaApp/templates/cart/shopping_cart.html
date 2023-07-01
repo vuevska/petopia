@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <style>
+        .th>th {
+            font-size: 16px; font-weight: bold
+        }
+    </style>
+    <main>
+        <div class="container text-center" style="margin-bottom: 20px">
+            <h2 class="pt-5">Your Shopping Cart</h2>
+            <hr class="mx-auto opacity-100 w-50 border-12" style="width: 10px; background-color: #292D32">
+            <table class="table mb-5 mx-auto">
+                <thead class="border bg-white border-1">
+                <tr class="th">
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+
+                <tbody class="text-white mt-5 table-dark">
+                {% for cart_item in object.items.all %}
+                    <tr>
+                        <td>
+                            {{ cart_item.product.name }}
+                        </td>
+                        <td>${{ cart_item.product.price }}</td>
+                        <td>
+                            <a class="text-white" href="{% url 'PetopiaApp:remove_one_item_from_cart' cart_item.product.slug %}">-</a>
+                            {{ cart_item.quantity }}
+                            <a class="text-white" href="{% url 'PetopiaApp:add_to_cart' cart_item.product.slug %}">+</a>
+                        </td>
+                        <td>${{ cart_item.get_total_cart_item_price }}
+                        </td>
+                        <td>
+                            <a class="btn-sm btn-danger"
+                               href="{% url 'PetopiaApp:remove_from_cart' cart_item.product.slug %}">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="pt-5 pb-5">
+                            <b style="font-size: 20px">
+                                Your shopping cart is empty!
+                            </b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <a class="btn btn-primary float-left ml-2" href="{% url 'PetopiaApp:home' %}">Shop More</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% if object.get_total %}
+                    <tr>
+                        <td style="font-size: 20px; font-weight: bold"><b>Order Total</b></td>
+                        <td></td>
+                        <td></td>
+                        <td style="font-size: 20px; font-weight: bold"><b>${{ object.get_total }}</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <a class="btn text-white float-left ml-2" href="{% url 'PetopiaApp:home' %}"
+                               style="background-color: #717171">Shop More</a>
+                            <a class="btn text-white float-right" href="{% url 'PetopiaApp:checkout' %}"
+                               style="background-color: #0A3E09">Continue to
+                                checkout</a>
+                        </td>
+                    </tr>
+                {% endif %}
+
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+{% endblock %}

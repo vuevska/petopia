@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load cart_template_tags %}
+
+{% block content %}
+
+    <main class="pt-4">
+        <div class="container wow fadeIn mb-5">
+
+            <div style="width: 20%">
+                <a href="{% url 'PetopiaApp:checkout' %}" class="btn text-white btn-md btn-block" type="submit"
+                   style="background-color: #717171">Back to Checkout</a>
+            </div>
+            <h2 class="my-5 h2 text-center">Payment with {{ payment_option }}</h2>
+            <div class="row">
+                <div class="col-md-8 mb-4">
+                    <div class="card mb-5">
+                        <form class="card-body" method="POST">
+                            {% csrf_token %}
+
+                            <div class="md-form mb-5" style="width: 65%">
+                                <input type="text" maxlength="16" id="card-number" class="form-control" required
+                                       placeholder="4242 4242 4242 4242">
+                                <label for="card-number" class="">Card Number</label>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-lg-4 col-md-12 mb-4">
+
+                                    <label for="country">Expiration</label>
+                                    <input type="text" maxlength="5" class="custom-select d-block w-100" id="expiration"
+                                           required placeholder="12/25">
+                                    <div class="invalid-feedback">
+                                        Please select a valid expiration date.
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <label for="zip">CVC</label>
+                                    <input type="password" maxlength="3" class="form-control" id="cvc" placeholder="222"
+                                           required>
+
+                                    <div class="invalid-feedback">
+                                        CVC code required.
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <hr class="mb-4 ">
+                            <button class="btn text-white btn-lg btn-block mb-5" type="submit"
+                                    style="background-color: #0A3E09">Pay
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-5">
+
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Your cart</span>
+                        <span class="badge badge-danger badge-pill">{{ request.user|cart_item_count }}</span>
+                    </h4>
+
+                    <ul class="list-group mb-3 z-depth-1">
+                        {% for item in object.items.all %}
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0">{{ item.product.name }}</h6>
+                                    <small class="text-muted">{{ item.product.short_description }}</small>
+                                </div>
+                                <span class="text-muted">{{ item.quantity }} x ${{ item.product.price }}</span>
+                                <span class="text-muted">
+                    <b>${{ item.get_total_cart_item_price }}</b>
+                </span>
+                            </li>
+                        {% endfor %}
+
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (USD)</span>
+                            <strong>${{ object.get_total }}</strong>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+{% endblock content %}

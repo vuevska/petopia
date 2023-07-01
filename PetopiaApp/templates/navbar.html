@@ -1,0 +1,61 @@
+{% load cart_template_tags %}
+
+<nav class="navbar navbar-expand-lg navbar-light scrolling-navbar" style="background-color: #DBAE6E;">
+    <div class="container">
+
+        <a class="navbar-brand waves-effect" href="/">
+            <strong class="display-4">PETOPIA</strong>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto">
+            </ul>
+
+            <ul class="navbar-nav nav-flex-icons pr-5">
+                {% if request.user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <span class="text-dark nav-link waves-effect">
+                            <span class="clearfix d-none d-sm-inline-block">Hello {{ request.user.username }}!</span>
+                        </span>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="text-dark nav-link waves-effect" href="{% url 'PetopiaApp:orders' %}">
+                            <span class="clearfix d-none d-sm-inline-block">Orders</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="{% url 'PetopiaApp:shopping_cart' %}" class="nav-link waves-effect">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="{% url 'logout' %}?next={{ request.path }}">
+                            <span class="clearfix d-none d-sm-inline-block"> Logout </span>
+                        </a>
+                    </li>
+
+
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="{% url 'login' %}?next={{ request.path }}">
+                            <span class="clearfix d-none d-sm-inline-block"> Login </span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+</nav>

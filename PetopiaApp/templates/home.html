@@ -1,0 +1,278 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <main>
+        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner" role="listbox">
+
+                <div class="carousel-item active">
+                    <div class="view"
+                         style="background-image: url('https://th.bing.com/th/id/R.ee2bccd2697756832c7a627f1fed08ae?rik=Hiaaqu4AVhpqdw&riu=http%3a%2f%2fechopetcare.com%2fwp-content%2fuploads%2f2017%2f05%2fcropped-pets-banner.jpg&ehk=18Pvd%2bPIyDUraGWSV0LYUJzF6E7hKTIpPY6Hqhc1OXw%3d&risl=&pid=ImgRaw&r=0'); background-repeat: no-repeat; background-size: cover;">
+
+                        <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+                            <div class="text-center white-text mx-5 wow fadeIn">
+                                <h1 class="mb-4">
+                                    <strong>Shop the best supplies for your pet</strong>
+                                </h1>
+
+                                <p>
+                                    <strong>Quality products delivered to your door</strong>
+                                </p>
+
+                                <p class="mb-4 d-none d-md-block">
+                                    <strong>We supply products for food, hygiene, carriers for transportation, healthy
+                                        snacks, toys and more! Check out the different categories below.</strong>
+                                </p>
+
+                                <a href="#categories" class="btn btn-outline-white btn-lg">
+                                    BROWSE PRODUCTS
+                                    <i class="fas fa-light fa-paw ml-2"></i>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="view"
+                         style="background-image: url('https://www.fetchpetcare.com/wp-content/uploads/2016/03/Dogs-Afraid-of-Cats-Featured-e1459436099821.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+                        <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+                            <div class="text-center white-text mx-5 wow fadeIn">
+                                <h1 class="mb-4">
+                                    <strong>Shop the best supplies for your pet</strong>
+                                </h1>
+
+                                <p>
+                                    <strong>Quality products delivered to your door</strong>
+                                </p>
+
+                                <p class="mb-4 d-none d-md-block">
+                                    <strong>We supply products for food, hygiene, carriers for transportation, healthy
+                                        snacks, toys and more! Check out the different categories below.</strong>
+                                </p>
+
+                                <a href="#categories" class="btn btn-outline-white btn-lg">
+                                    BROWSE PRODUCTS
+                                    <i class="fas fa-light fa-paw ml-2"></i>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="view"
+                         style="background-image: url('https://st3.depositphotos.com/1032808/14072/i/450/depositphotos_140726578-stock-photo-kitten-puppy-microscope.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+                        <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+                            <div class="text-center white-text mx-5 wow fadeIn">
+                                <h1 class="mb-4">
+                                    <strong>Shop the best supplies for your pet</strong>
+                                </h1>
+
+                                <p>
+                                    <strong>Quality products delivered to your door</strong>
+                                </p>
+
+                                <p class="mb-4 d-none d-md-block">
+                                    <strong>We supply products for food, hygiene, carriers for transportation, healthy
+                                        snacks, toys and more! Check out the different categories below.
+                                    </strong>
+
+                                </p>
+
+                                <a href="#categories" class="btn btn-outline-white btn-lg">
+                                    Browse Products
+                                    <i class="fas fa-light fa-paw ml-2"></i>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+
+        <main>
+            <div class="container">
+
+
+                <nav class="navbar navbar-expand-lg text-dark navbar-dark lighten-3 mt-3 mb-5"
+                     style="background-color: #DBAE6E">
+
+
+                    <span class="navbar-brand" id="categories">Categories:</span>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                        <ul class="navbar-nav mr-auto parent">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'PetopiaApp:home' %}">All
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            {% for category in pet_categories %}
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                       href="{% url 'PetopiaApp:home' category.id %}">{{ category.name.capitalize }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                        <form class="form-inline" action="{% url 'PetopiaApp:home' %}" method="GET">
+
+                            <div class="md-form my-0">
+                                <input class="form-control mr-sm-2" type="text" name="search_query" placeholder="Search"
+                                       aria-label="Search">
+                            </div>
+                            <button class="btn" type="submit" title="Search">
+                                <i class="fas fa-search text-white"></i>
+                            </button>
+                        </form>
+
+                    </div>
+
+                </nav>
+
+                <section class="text-center mb-4">
+                    <div class="row wow fadeIn">
+
+                        {% for item in products %}
+                            <div class="col-lg-3 col-md-6 mb-4">
+
+                                <div class="card" style="height: 360px">
+
+                                    <div class="view overlay">
+                                        <img src="{{ MEDIA_URL }}{{ item.image.url }}" class="card-img-top img-fluid"
+                                             alt="">
+
+                                        <a href="{{ item.get_absolute_url }}">
+                                            <div class="mask rgba-white-slight"></div>
+                                        </a>
+                                    </div>
+
+                                    <div class="card-body text-center">
+                                        <a href="" class="grey-text">
+                                            <h5>{{ item.get_category_display }}</h5>
+                                        </a>
+
+                                        <h5>
+                                            <strong>
+                                                <a href="{{ item.get_absolute_url }}"
+                                                   class="dark-grey-text">{{ item.name }}</a>
+                                            </strong>
+                                        </h5>
+
+                                        <p class="text-muted">
+                                            {{ item.short_description }}
+                                        </p>
+
+                                        <h4 class="font-weight-bold blue-text">
+                                            <strong class="text-danger">$
+                                                {% if item.discount_price %}
+                                                    {{ item.discount_price }}
+                                                {% else %}
+                                                    {{ item.price }}
+                                                {% endif %}
+                                            </strong>
+                                        </h4>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    {% if request.user.is_superuser %}
+                        <div class="row m-2 d-flex justify-content-center text-white">
+                            <a class="btn btn-md col-3" style="background-color: #0A3E09"
+                               href="{% url 'PetopiaApp:add_pet_category' %}">Add new pet category</a>
+                            <a class="btn btn-md col-3" style="background-color: #0A3E09"
+                               href="{% url 'PetopiaApp:add_product' %}">Add new product</a>
+                        </div>
+                    {% endif %}
+
+                </section>
+
+
+                <nav class="d-flex justify-content-center wow fadeIn">
+                    <ul class="pagination">
+
+                        {% if products.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ products.previous_page_number }}"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}
+                                    <span class="sr-only">{{ products.previous_page_number }}</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        <li class="page-item" style="background-color: #DBAE6E">
+                            <a class="page-link" href="#">{{ products.number }}
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+
+                        {% if products.has_next %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+            </div>
+        </main>
+
+    </main>
+{% endblock content %}
+
+

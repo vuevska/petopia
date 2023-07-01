@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main class="pt-4 mb-5">
+        <div class="container dark-grey-text">
+
+            <h3 class="mb-3">Product</h3>
+            <div class="mb-5">
+                <a href="{% url 'PetopiaApp:home' object.pet_category.id %}">{{ pet_category }}
+                    products</a>
+
+            </div>
+            <div class="row wow fadeIn">
+
+                <div class="col-md-6 mt-2 mb-3 text-center bg-white"
+                     style="border: 1px solid lightgray; border-radius: 15px">
+
+                    <img src="{{ MEDIA_URL }}{{ object.image.url }}" class="img-fluid" alt="Product"
+                         style="max-width: 80%">
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                    <div class="p-4">
+
+                        <p class="lead font-weight-bold">Name</p>
+
+                        <div class="mb-3">
+                            <span class="mr-1">{{ object.name }}</span>
+                        </div>
+
+                        <p class="lead font-weight-bold">Brand</p>
+
+                        <div class="mb-3">
+                            <span class="mr-1">{{ object.brand }}</span>
+                        </div>
+
+
+                        <p class="lead font-weight-bold">Description</p>
+
+                        <p>>{{ object.short_description }}</p>
+                        <p>>{{ object.detailed_description }}</p>
+
+                        <p class="lead">
+                        <p class="lead font-weight-bold">Price</p>
+                        <span class="mr-1 text-danger" style="font-size: 30px; font-weight: bold">
+                                    ${{ object.price }}
+                                </span>
+                        </p>
+
+                        <div class="mt-2">
+                            <a href="{% url 'PetopiaApp:add_to_cart' object.slug %}"
+                               class="btn btn-primary btn-md my-0 p">
+                                Add to cart
+                                <i class="fas fa-shopping-cart ml-1"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+{% endblock %}

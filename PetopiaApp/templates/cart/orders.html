@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container mx-auto text-center col-6 pt-5 mb-5">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3 class="card-title mt-2">
+                    <b>Your orders</b>
+                </h3>
+            </div>
+            <div class="card-body text-left">
+                {% for order in orders %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2">Ordered on: {{ order.date_ordered }}</h6>
+                            {% for item in order.items.all %}
+                                <p class="card-text">{{ item }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <span>Total (USD)</span>
+                            <strong>${{ order.get_total }}</strong>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="mb-3 text-center">
+                        <div class="card-body">
+                            <h6 class="mb-2 pt-4 pb-4">You don't have any orders!</h6>
+
+                            <a href="{% url 'PetopiaApp:home' %}" class="text-dark btn btn-lg">
+                                Browse Products
+                                <i class="fas fa-paw ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

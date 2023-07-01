@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container col-4 text-center">
+
+        <div class="text-left pt-5 mb-3">
+            <h1>Add new product</h1>
+            <a href="{% url 'PetopiaApp:home' %}">home</a> /
+            <span>add a new product</span>
+        </div>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary mb-5">Submit</button>
+        </form>
+    </div>
+{% endblock content %}

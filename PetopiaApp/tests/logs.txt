@@ -1,0 +1,72 @@
+2023-09-24 17:10:48,072 - INFO - Test started
+2023-09-24 17:10:52,497 - INFO - Logged in as johndoe
+2023-09-24 17:10:53,121 - INFO - Navigated to product page: http://petopia.pythonanywhere.com/product/dog/adult-rottweiler-1
+2023-09-24 17:10:53,723 - INFO - Added product to the cart
+2023-09-24 17:10:55,954 - INFO - Payment successful
+2023-09-24 17:10:55,954 - INFO - Test completed successfully
+2023-09-24 17:18:22,010 - INFO - Test started
+2023-09-24 17:18:27,715 - INFO - Logged in as johndoe
+2023-09-24 17:18:28,213 - INFO - Navigated to product page: http://petopia.pythonanywhere.com/product/dog/adult-rottweiler-1
+2023-09-24 17:18:28,792 - INFO - Added product to the cart
+2023-09-24 17:18:31,113 - INFO - Payment successful
+2023-09-24 17:18:31,113 - INFO - Test completed successfully
+2023-09-24 17:22:57,397 - INFO - Test started
+2023-09-24 17:23:01,550 - INFO - Logged in as johndoe
+2023-09-24 17:23:02,276 - INFO - Navigated to product page: http://petopia.pythonanywhere.com/product/dog/adult-rottweiler-1
+2023-09-24 17:23:02,885 - INFO - Added product to the cart
+2023-09-24 17:23:05,159 - INFO - Payment successful
+2023-09-24 17:23:05,159 - INFO - Completed payment successfully
+2023-09-24 17:23:35,083 - INFO - Test started
+2023-09-24 17:23:38,959 - INFO - Logged in as johndoe
+2023-09-24 17:23:39,490 - INFO - Navigated to product page: http://petopia.pythonanywhere.com/product/dog/adult-rottweiler-1
+2023-09-24 17:24:09,965 - ERROR - Add product to card Test failed Timeout 30000ms exceeded.
+=========================== logs ===========================
+waiting for locator("h2")
+============================================================
+2023-09-24 17:24:40,031 - ERROR - Checkout and Pay Test failed Timeout 30000ms exceeded.
+=========================== logs ===========================
+waiting for locator("a:has-text('Continue to checkout')")
+============================================================
+2023-09-24 17:25:21,123 - INFO - Test started
+2023-09-24 17:25:24,941 - INFO - Logged in as johndoe
+2023-09-24 17:25:25,405 - INFO - Navigated to product page: http://petopia.pythonanywhere.com/product/dog/adult-rottweiler-1
+2023-09-24 17:25:25,972 - INFO - Added product to the cart
+2023-09-24 17:25:28,222 - INFO - Payment successful
+2023-09-24 17:25:28,222 - INFO - Completed payment successfully
+2023-09-24 17:26:46,441 - INFO - Test started
+2023-09-24 17:26:52,622 - INFO - Logged in as johndoe
+2023-09-24 17:26:52,989 - INFO - Navigated to product page: http://petopia.pythonanywhere.com/product/dog/adult-rottweiler-1
+2023-09-24 17:26:53,507 - INFO - Added product to the cart
+2023-09-24 17:26:54,967 - INFO - Payment successful
+2023-09-24 17:26:54,967 - INFO - Completed payment successfully
+2023-09-24 17:27:11,905 - INFO - Logged in as johndoe
+2023-09-24 17:27:13,756 - INFO - Test started
+2023-09-24 17:27:13,756 - ERROR - Complete payment Test failed: name 'login' is not defined
+2023-09-24 17:27:29,894 - INFO - Logged in as johndoe
+2023-09-24 17:27:31,757 - INFO - Test started
+2023-09-24 17:27:31,757 - ERROR - Complete payment Test failed: name 'login' is not defined
+2023-09-24 17:28:25,550 - INFO - Logged in as johndoe
+2023-09-24 17:28:29,700 - INFO - Navigated to product page: http://petopia.pythonanywhere.com/product/dog/adult-rottweiler-1
+2023-09-24 17:28:39,822 - ERROR - Add product to card Test failed Page closed
+=========================== logs ===========================
+waiting for locator("a:has-text('Add to cart')")
+============================================================
+2023-09-24 17:28:43,843 - ERROR - Checkout and Pay Test failed Page closed
+=========================== logs ===========================
+waiting for locator("a:has-text('Continue to checkout')")
+============================================================
+2023-09-24 17:28:46,205 - INFO - Test started
+2023-09-24 17:28:47,536 - ERROR - Login Test failed: Page closed
+=========================== logs ===========================
+navigating to "http://petopia.pythonanywhere.com/", waiting until "load"
+============================================================
+2023-09-24 17:28:47,546 - ERROR - Navigate to product Test failed Target page, context or browser has been closed
+2023-09-24 17:28:47,557 - ERROR - Add product to card Test failed Target page, context or browser has been closed
+2023-09-24 17:28:47,568 - ERROR - Checkout and Pay Test failed Target page, context or browser has been closed
+2023-09-24 17:28:47,568 - INFO - Completed payment successfully
+2023-09-24 17:29:12,195 - INFO - Test started
+2023-09-24 17:29:16,421 - INFO - Logged in as johndoe
+2023-09-24 17:29:17,276 - INFO - Navigated to product page: http://petopia.pythonanywhere.com/product/dog/adult-rottweiler-1
+2023-09-24 17:29:17,842 - INFO - Added product to the cart
+2023-09-24 17:29:19,982 - INFO - Payment successful
+2023-09-24 17:29:19,982 - INFO - Completed payment successfully

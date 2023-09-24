@@ -70,3 +70,9 @@ navigating to "http://petopia.pythonanywhere.com/", waiting until "load"
 2023-09-24 17:29:17,842 - INFO - Added product to the cart
 2023-09-24 17:29:19,982 - INFO - Payment successful
 2023-09-24 17:29:19,982 - INFO - Completed payment successfully
+2023-09-24 17:48:54,852 - INFO - Test started
+2023-09-24 17:48:58,504 - INFO - Logged in as johndoe
+2023-09-24 17:48:59,007 - INFO - Navigated to product page: http://petopia.pythonanywhere.com/product/dog/adult-rottweiler-1
+2023-09-24 17:48:59,609 - INFO - Added product to the cart
+2023-09-24 17:49:02,127 - INFO - Payment successful
+2023-09-24 17:49:02,127 - INFO - Completed payment successfully

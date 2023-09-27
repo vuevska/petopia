@@ -70,8 +70,3 @@ class TestViews(TestCase):
         response = self.client.get(self.add_product_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'admin-actions/add_product.html')
-
-    # def test_add_product_POST(self):
-    #     response = self.client.post(self.add_product_url, self.product1)
-    #     self.assertEqual(response.status_code, 302)
-    #     self.assertTrue(Product.objects.filter(name='Product 1').exists())

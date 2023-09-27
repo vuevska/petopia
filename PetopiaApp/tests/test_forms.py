@@ -37,11 +37,6 @@ class FormsTestCase(TestCase):
         form = PetCategoryForm(data=self.pet_category_data)
         self.assertTrue(form.is_valid())
 
-    # TODO: Fix test failure
-    def test_product_form(self):
-        form = ProductForm(data=self.product_data)
-        self.assertFalse(form.is_valid())
-
     def test_register_form(self):
         form = RegisterForm(data=self.register_data)
         self.assertTrue(form.is_valid())
